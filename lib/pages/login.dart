@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Login extends StatelessWidget {
@@ -8,16 +9,19 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: Center(
+      child: SingleChildScrollView(
           child: Column(
         children: [
-          Image.asset("assets/images/login_1.png",
-              height: 150, fit: BoxFit.fill),
+          Image.asset(
+            "assets/images/login_1.png",
+            fit: BoxFit.cover,
+            height: 150,
+          ),
           SizedBox(
             height: 20.0,
           ),
           Text(
-            "Welcome To TheOnspy",
+            "Welcome",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           SizedBox(
@@ -47,11 +51,12 @@ class Login extends StatelessWidget {
             height: 20,
           ),
           ElevatedButton(
-              onPressed: () {
-                print("Go To Home Page");
-              },
-              child: Text("Login"),
-              style: TextButton.styleFrom())
+            child: Text("Login"),
+            style: TextButton.styleFrom(minimumSize: Size(200, 50)),
+            onPressed: () {
+              Navigator.pushNamed(context, MyRoutes.homeRoute);
+            },
+          )
         ],
       )),
     );
