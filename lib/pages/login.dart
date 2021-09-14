@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -21,7 +27,7 @@ class Login extends StatelessWidget {
             height: 20.0,
           ),
           Text(
-            "Welcome",
+            "Welcome $name",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           SizedBox(
@@ -39,6 +45,10 @@ class Login extends StatelessWidget {
                   TextField(
                     decoration: InputDecoration(
                         hintText: "Enter Username", labelText: "Username"),
+                    onChanged: (value) {
+                      name = value;
+                      setState(() {});
+                    },
                   ),
                   TextField(
                     obscureText: true,
